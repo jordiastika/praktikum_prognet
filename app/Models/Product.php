@@ -12,7 +12,7 @@ class Product extends Model
     protected $fillable = ['product_name','price','description','product_rate','stock','weight'];
 
     function diskon(){
-    	return $this->hasMany('App\Models\Discount', 'id_product');
+    	return $this->hasMany('App\Models\Discount', 'product_id');
     }
 
     function review(){
