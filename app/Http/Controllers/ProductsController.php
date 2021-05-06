@@ -57,7 +57,7 @@ class ProductsController extends Controller
 
 		try {
 			Discount::create([
-				'id_product' => $req->idproduk,
+				'product_id' => $req->idproduk,
 				'percentage' => $req->persen,
 				'start' => $req->start,
 				'end' => $req->end
@@ -204,8 +204,8 @@ class ProductsController extends Controller
     function hapusproduct(){
     	Product::findOrFail($_GET['id']);
     	try {
-    		Discount::where('id_product', $_GET['id'])->delete();
-    		Product_image::where('id_product', $_GET['id'])->delete();
+    		Discount::where('product_id', $_GET['id'])->delete();
+    		Product_image::where('product_id', $_GET['id'])->delete();
     		Product_category_detail::where('product_id', $_GET['id'])->delete();
     		Product::where('id', $_GET['id'])->delete();
     		return redirect('/list/products')->with('sukses', "Data produk berhasil dihapus");

@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Courier;
+use App\Models\Product_categorie;
 
 class CourierController extends Controller
 {
     function index(){
+		$data['category'] = Product_categorie::all();
     	$data['cou'] = Courier::all();
     	return view('admin.listcourier', $data);
     }
